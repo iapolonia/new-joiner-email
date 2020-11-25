@@ -2,11 +2,11 @@ import React, { useState } from "react";
 
 import { Client as Styletron } from "styletron-engine-atomic";
 import { Provider as StyletronProvider } from "styletron-react";
-import { LightTheme, BaseProvider, useStyletron, DarkTheme } from "baseui";
+import { LightTheme, BaseProvider, useStyletron } from "baseui";
 
 import JoinerForm from "./JoinerForm";
 import { H1, ParagraphMedium } from "baseui/typography";
-import { Grid, Responsive, Cell, BEHAVIOR } from "baseui/layout-grid";
+import { Grid, Cell, BEHAVIOR } from "baseui/layout-grid";
 
 import { Drawer, SIZE } from "baseui/drawer";
 
@@ -54,6 +54,7 @@ export function PreviewDrawer({ isOpen, onClose, htmlContent }) {
         }}
       >
         <iframe
+          title="preview"
           srcDoc={htmlContent}
           style={{
             width: "98%",

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { useForm, Controller } from "react-hook-form";
 
-import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
+import { FlexGrid } from "baseui/flex-grid";
 import { Input } from "baseui/input";
 import { Button } from "baseui/button";
 import { Textarea } from "baseui/textarea";
@@ -10,22 +10,16 @@ import { FormControl } from "baseui/form-control";
 import { DatePicker } from "baseui/datepicker";
 
 import ImageUploader from "./ImageUploader";
-import { useStyletron } from "baseui";
 
 export default function ({ onSubmit, onPreview }) {
-  const [css, theme] = useStyletron();
-
   const {
     register,
     handleSubmit,
     control,
     errors,
     getValues,
-    watch,
     reset,
   } = useForm();
-
-  const [image, setImage] = useState(null);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

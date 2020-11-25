@@ -26,7 +26,7 @@ export default function ImageUploader({ value, onChange, name }) {
 }
 
 function UploadedImage({ onDelete, value, alt }) {
-  const [css, _theme] = useStyletron();
+  const [css] = useStyletron();
 
   return (
     <div className={css({ position: "relative" })}>
