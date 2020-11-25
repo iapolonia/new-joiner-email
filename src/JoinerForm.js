@@ -22,6 +22,7 @@ export default function ({ onSubmit, onPreview }) {
     errors,
     getValues,
     watch,
+    reset,
   } = useForm();
 
   const [image, setImage] = useState(null);
@@ -107,13 +108,13 @@ export default function ({ onSubmit, onPreview }) {
         label="To Remember Me"
         caption="Write something nice about this new person that is going to join the team"
         error={
-          errors.rememberMe
+          errors.toRememberMe
             ? "Please write at least 150 characteres"
             : undefined
         }
       >
         <Controller
-          name="rememberMe"
+          name="toRememberMe"
           control={control}
           defaultValue={""}
           rules={{ required: true, minLength: 150 }}
@@ -121,7 +122,7 @@ export default function ({ onSubmit, onPreview }) {
             <Textarea
               value={value}
               onChange={(e) => onChange(e.target.value)}
-              error={errors.rememberMe}
+              error={errors.toRememberMe}
             />
           )}
         />
@@ -149,16 +150,25 @@ export default function ({ onSubmit, onPreview }) {
         />
       </FormControl>
 
-      <FlexGrid gridGap="scale400" justifyContent="flex-end">
-        <Button
-          type="button"
-          onClick={() => onPreview(getValues())}
-          kind="secondary"
-        >
-          Preview Email
-        </Button>
-        <Button type="submit">Generate Email</Button>
-      </FlexGrid>
+      <div style={{ display: "grid", gridTemplateColumns: "auto auto" }}>
+        <div style={{ justifySelf: "start" }}>
+          <Button type="reset" kind="tertiary" onClick={() => reset()}>
+            Clear
+          </Button>
+        </div>
+        <div style={{ justifySelf: "end" }}>
+          <FlexGrid gridGap="scale400">
+            <Button
+              type="button"
+              onClick={() => onPreview(getValues())}
+              kind="secondary"
+            >
+              Preview Email
+            </Button>
+            <Button type="submit">Generate Email</Button>
+          </FlexGrid>
+        </div>
+      </div>
     </form>
   );
 }

@@ -10,6 +10,10 @@ import { Grid, Responsive, Cell, BEHAVIOR } from "baseui/layout-grid";
 
 import { Drawer, SIZE } from "baseui/drawer";
 
+import { generatePreview, generateEmail } from "./emailGenerator";
+
+import { saveAs } from "file-saver";
+
 const engine = new Styletron();
 
 function LeftPane({ onPreview, onSubmit }) {
@@ -66,14 +70,23 @@ export function PreviewDrawer({ isOpen, onClose, htmlContent }) {
 export default function App() {
   const [preview, setPreview] = useState(null);
 
+  function saveHTML(html, filename) {
+    const blob = new Blob([html], { type: "text/html;charset=utf-8" });
+    saveAs(blob, filename);
+  }
+
   return (
     <StyletronProvider value={engine}>
       <BaseProvider theme={LightTheme}>
         <Grid behavior={BEHAVIOR.fluid}>
-          <Cell span={6}>
+          <Cell span={7}>
             <LeftPane
-              onPreview={(data) => setPreview(JSON.stringify(data))}
-              onSubmit={(data) => console.log(data)}
+              onPreview={(data) =>
+                generatePreview(data).then((html) => setPreview(html))
+              }
+              onSubmit={(data) =>
+                generateEmail(data).then((html) => saveHTML(html, "email.html"))
+              }
             ></LeftPane>
           </Cell>
         </Grid>
