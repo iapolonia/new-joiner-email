@@ -1,0 +1,31 @@
+{
+  "name": "new-joiners-email",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "main": "src/index.js",
+  "dependencies": {
+    "baseui": "9.105.0",
+    "react": "17.0.0",
+    "react-dom": "17.0.0",
+    "react-hook-form": "6.11.3",
+    "react-scripts": "3.4.3",
+    "styletron-engine-atomic": "1.4.6",
+    "styletron-react": "5.2.7"
+  },
+  "devDependencies": {
+    "typescript": "3.8.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

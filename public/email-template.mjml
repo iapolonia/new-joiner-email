@@ -1,0 +1,53 @@
+<mjml>
+  <mj-head>
+    <mj-font name="Montserrat" href="https://fonts.googleapis.com/css?family=Montserrat" />
+    <mj-attributes>
+      <mj-text font-family="Montserrat, Arial" />
+      <mj-class name="card" border-right="1px solid white" border-left="1px solid white" padding="20px 5px"></mj-class>
+      <mj-class name="card-title" font-weight="700" font-size="25px" align="center"></mj-class>
+      <mj-class name="card-content" font-size="16px" align="justify" line-height="1.2"></mj-class>
+    </mj-attributes>
+  </mj-head>
+  <mj-body width="900px" background-color="#fff">
+    <mj-section>
+      <mj-column>
+        <mj-text>
+          <h3 style="font-size: 16px; font-weight: 800;">
+            RPA | New Joiner <span style="color: rgb(193,205,21);">20-02-2021</span>
+          </h3>
+          <h1 style="font-size: 32px; font-weight: 400;">
+            Bem-vindo à  equipa, <span style="color: rgb(193,205,21);">Lui­sa Soares</span>!
+          </h1>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section>
+      <mj-column width="50%" vertical-align="middle">
+        <mj-image src="https://source.unsplash.com/600x600/?portrait" alt="Aniversariante" border-radius="100%" />
+      </mj-column>
+      <mj-column width="40%" vertical-align="middle">
+        <mj-image src="https://st2.depositphotos.com/5592054/10479/v/950/depositphotos_104791766-stock-illustration-retro-robot-toy-robot-in.jpg" alt="Robot" />
+      </mj-column>
+    </mj-section>
+    <mj-section background-color="rgb(193,205,21)" padding="0">
+      <mj-column mj-class="card">
+        <mj-text mj-class="card-title">About Me!</mj-text>
+        <mj-text mj-class="card-content">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean finibus magna vitae justo ornare fermentum.
+        </mj-text>
+      </mj-column>
+      <mj-column mj-class="card">
+        <mj-text mj-class="card-title">To Remember</mj-text>
+        <mj-text mj-class="card-content">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean finibus magna vitae justo ornare fermentum.
+        </mj-text>
+      </mj-column>
+      <mj-column mj-class="card">
+        <mj-text mj-class="card-title">Where I Am</mj-text>
+        <mj-text mj-class="card-content">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean finibus magna vitae justo ornare fermentum.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>
