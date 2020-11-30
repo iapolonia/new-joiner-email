@@ -1,5 +1,4 @@
 import { render as renderMustache } from "mustache";
-import mjml2html from "mjml-web";
 import moment from "moment";
 
 const template = (async () => {
@@ -18,33 +17,32 @@ async function generateHTML(data) {
 
   const mjml = renderMustache(t, data);
 
-  const { html } = mjml2html(mjml);
+  const username = "9483e646-5c32-4e89-bf32-66155a1f88eb";
+  const password = "719008c1-e69b-4e2d-b897-6a8aeb849d98";
+
+  const response = await fetch("https://api.mjml.io/v1/render", {
+    method: "POST",
+    headers: (() => {
+      const headers = new Headers();
+      headers.set("Authorization", "Basic " + btoa(username + ":" + password));
+      headers.set("Content-Type", "application/json");
+      return headers;
+    })(),
+    body: JSON.stringify({ mjml }),
+  });
+
+  const { html } = await response.json();
 
   return html;
-}
-
-function imageToDataURL(imageUrl) {
-  return new Promise((resolution, rejection) => {
-    fetch(imageUrl)
-      .then((response) => response.blob())
-      .then((blob) => {
-        let reader = new FileReader();
-        reader.readAsDataURL(blob);
-        reader.onloadend = () => {
-          resolution(reader.result);
-        };
-      })
-      .catch((err) => rejection(`failed to retrieve image: ${err}`));
-  });
 }
 
 export async function generateEmail(data) {
   const { photo, date, ...rest } = data;
 
   return generateHTML({
-    photo: await imageToDataURL(URL.createObjectURL(photo)),
+    photo: URL.createObjectURL(photo),
     date: moment(date).format("DD/MM/YYYY"),
-    eveeImg: await imageToDataURL("evee-img.jpg"),
+    eveeImg: "evee-img.jpg",
     ...rest,
   });
 }

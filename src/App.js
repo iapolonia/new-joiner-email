@@ -16,7 +16,7 @@ import { saveAs } from "file-saver";
 
 const engine = new Styletron();
 
-function LeftPane({ onPreview, onSubmit }) {
+function Pane({ children }) {
   const [css, theme] = useStyletron();
 
   return (
@@ -27,15 +27,18 @@ function LeftPane({ onPreview, onSubmit }) {
         ...theme.borders.border600,
       })}
     >
-      <header>
-        <H1>New Joiners Welcome Email</H1>
-        <ParagraphMedium>
-          Create a new uploading Email for the new welcomers
-        </ParagraphMedium>
-      </header>
-
-      <JoinerForm onSubmit={onSubmit} onPreview={onPreview}></JoinerForm>
+      {children}
     </div>
+  );
+}
+
+function LeftPane({ onPreview, onSubmit }) {
+  const [css, theme] = useStyletron();
+
+  return (
+    <Pane>
+      <JoinerForm onSubmit={onSubmit} onPreview={onPreview}></JoinerForm>
+    </Pane>
   );
 }
 
@@ -79,14 +82,26 @@ export default function App() {
   return (
     <StyletronProvider value={engine}>
       <BaseProvider theme={LightTheme}>
-        <Grid behavior={BEHAVIOR.fluid}>
-          <Cell span={7}>
+        <Grid behavior={BEHAVIOR.fluid} gridGaps={[10, 10, 10]}>
+          <Cell span={[4, 8, 6]}>
+            <Pane>
+              <header>
+                <H1>New Joiners Welcome Email</H1>
+                <ParagraphMedium>
+                  Create a new uploading Email for the new welcomers
+                </ParagraphMedium>
+              </header>
+            </Pane>
+          </Cell>
+          <Cell span={[4, 8, 6]}>
             <LeftPane
               onPreview={(data) =>
                 generatePreview(data).then((html) => setPreview(html))
               }
               onSubmit={(data) =>
-                generateEmail(data).then((html) => saveHTML(html, "email.html"))
+                generatePreview(data).then((html) =>
+                  saveHTML(html, "email.html")
+                )
               }
             ></LeftPane>
           </Cell>

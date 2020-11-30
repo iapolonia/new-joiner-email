@@ -8,7 +8,7 @@
   "dependencies": {
     "baseui": "9.105.0",
     "file-saver": "^2.0.5",
-    "mjml-web": "^4.7.0",
+    "mjml-core": "^4.7.1",
     "moment": "^2.29.1",
     "mustache": "^4.0.1",
     "react": "17.0.0",
