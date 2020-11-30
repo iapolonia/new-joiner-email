@@ -40,7 +40,6 @@ export async function generateEmail(data) {
   const { photo, date, ...rest } = data;
 
   return generateHTML({
-    photo: URL.createObjectURL(photo),
     date: moment(date).format("DD/MM/YYYY"),
     eveeImg: "evee-img.jpg",
     ...rest,
@@ -51,7 +50,6 @@ export async function generatePreview(data) {
   const { photo, date, ...rest } = data;
 
   return generateHTML({
-    photo: photo ? URL.createObjectURL(photo) : "",
     date: date ? moment(date).format("DD/MM/YYYY") : "",
     eveeImg: "evee-img.jpg",
     ...rest,
