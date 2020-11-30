@@ -2,14 +2,11 @@ import React from "react";
 
 import { useForm, Controller } from "react-hook-form";
 
-import { FlexGrid } from "baseui/flex-grid";
 import { Input } from "baseui/input";
 import { Button } from "baseui/button";
 import { Textarea } from "baseui/textarea";
 import { FormControl } from "baseui/form-control";
 import { DatePicker } from "baseui/datepicker";
-
-import ImageUploader from "./ImageUploader";
 
 export default function ({ onSubmit, onPreview }) {
   const {
@@ -54,27 +51,6 @@ export default function ({ onSubmit, onPreview }) {
           )}
         />
       </FormControl>
-
-      <div style={{ maxWidth: "300px" }}>
-        <FormControl
-          label="Profile Picture"
-          caption="The profile picture must have a square size (i.e. 500x500) and the new joiner face should be centered."
-          error={errors.photo ? "Required" : undefined}
-        >
-          <Controller
-            name="photo"
-            control={control}
-            defaultValue={null}
-            rules={{ required: true }}
-            render={({ value, onChange }) => (
-              <ImageUploader
-                value={value}
-                onChange={(value) => onChange(value)}
-              />
-            )}
-          />
-        </FormControl>
-      </div>
 
       <FormControl
         label="About Me"
@@ -144,23 +120,21 @@ export default function ({ onSubmit, onPreview }) {
         />
       </FormControl>
 
-      <div style={{ display: "grid", gridTemplateColumns: "auto auto" }}>
-        <div style={{ justifySelf: "start" }}>
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div>
           <Button type="reset" kind="tertiary" onClick={() => reset()}>
             Clear
           </Button>
         </div>
-        <div style={{ justifySelf: "end" }}>
-          <FlexGrid gridGap="scale400">
-            <Button
-              type="button"
-              onClick={() => onPreview(getValues())}
-              kind="secondary"
-            >
-              Preview Email
-            </Button>
-            <Button type="submit">Generate Email</Button>
-          </FlexGrid>
+        <div style={{ display: "flex", gap: "0.5em" }}>
+          <Button
+            type="button"
+            onClick={() => onPreview(getValues())}
+            kind="secondary"
+          >
+            Preview
+          </Button>
+          <Button type="submit">Generate</Button>
         </div>
       </div>
     </form>

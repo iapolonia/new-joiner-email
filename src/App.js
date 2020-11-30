@@ -33,8 +33,6 @@ function Pane({ children }) {
 }
 
 function LeftPane({ onPreview, onSubmit }) {
-  const [css, theme] = useStyletron();
-
   return (
     <Pane>
       <JoinerForm onSubmit={onSubmit} onPreview={onPreview}></JoinerForm>
@@ -99,9 +97,7 @@ export default function App() {
                 generatePreview(data).then((html) => setPreview(html))
               }
               onSubmit={(data) =>
-                generatePreview(data).then((html) =>
-                  saveHTML(html, "email.html")
-                )
+                generateEmail(data).then((html) => saveHTML(html, "email.html"))
               }
             ></LeftPane>
           </Cell>

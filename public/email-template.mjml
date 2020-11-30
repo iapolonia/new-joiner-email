@@ -23,7 +23,7 @@
     </mj-section>
     <mj-section>
       <mj-column width="50%" vertical-align="middle">
-        <mj-image src="{{photo}}" alt="[[Joiner]]" border-radius="100%" width="300px" height="300px" />
+        <mj-image src="{{photo}}" alt="Joiner Photo" border-radius="100%" width="300px" height="300px" />
       </mj-column>
       <mj-column width="50%" vertical-align="middle">
         <mj-image src="{{eveeImg}}" alt="Robot" width="150px" height="200px" />
