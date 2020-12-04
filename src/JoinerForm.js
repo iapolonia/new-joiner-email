@@ -63,7 +63,7 @@ export default function ({ onSubmit, onPreview }) {
           name="aboutMe"
           control={control}
           defaultValue={""}
-          rules={{ required: true, minLength: 150 }}
+          rules={{ required: true }}
           render={({ onChange, value }) => (
             <Textarea
               value={value}
@@ -87,7 +87,7 @@ export default function ({ onSubmit, onPreview }) {
           name="toRememberMe"
           control={control}
           defaultValue={""}
-          rules={{ required: true, minLength: 150 }}
+          rules={{ required: true }}
           render={({ onChange, value }) => (
             <Textarea
               value={value}
@@ -109,7 +109,7 @@ export default function ({ onSubmit, onPreview }) {
           name="whereIAm"
           control={control}
           defaultValue={""}
-          rules={{ required: true, minLength: 150 }}
+          rules={{ required: true }}
           render={({ onChange, value }) => (
             <Textarea
               value={value}
